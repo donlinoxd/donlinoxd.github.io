@@ -736,6 +736,9 @@ header {
   .home-container {
     background-size: 37%;
   }
+  :root.darkmode body .home-container {
+    background-size: 50%;
+  }
   .about-me {
     display: flex;
     justify-content: center;
