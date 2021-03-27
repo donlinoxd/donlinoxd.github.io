@@ -565,7 +565,7 @@ header {
   align-items: center;
   width: 80%;
   max-width: 600px;
-  height: 75%;
+  height: 75vh;
   border-radius: 10px;
   background-color: #f4f9ff;
   position: relative;
