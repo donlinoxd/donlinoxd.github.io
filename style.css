@@ -462,12 +462,12 @@ header {
   width: 80%;
   margin: 2rem 1rem;
   overflow: hidden;
-  transition: 0.8s;
+  transition: 0.7s ease-in-out;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(100%);
+  transform: translateY(50%);
   opacity: 0;
 }
 .projectBx-reveal {
@@ -565,7 +565,7 @@ header {
   align-items: center;
   width: 80%;
   max-width: 600px;
-  height: 600px;
+  height: 75vh;
   border-radius: 10px;
   background-color: #f4f9ff;
   position: relative;
@@ -738,10 +738,10 @@ footer div {
 }
 @keyframes anim-onload-bg {
   0% {
-    background-position: 200% bottom;
+    opacity: 0;
   }
-  50% {
-    background-position: 90% bottom;
+  100% {
+    opacity: 1;
   }
 }
 
