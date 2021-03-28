@@ -80,3 +80,5 @@ window.addEventListener("scroll", () => {
 // ----------INPUT FORM BUG ON MOBILE PHONE
 document.querySelector(".contact-container").style.minHeight =
   window.innerHeight + "px";
+document.querySelector(".form-container").style.minHeight =
+  window.innerHeight * 0.75 + "px";
