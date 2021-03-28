@@ -71,8 +71,12 @@ window.addEventListener("scroll", () => {
   projectBx.forEach((box) => {
     boxTop = box.offsetTop;
     box.classList.remove("projectBx-reveal");
-    if (pageOffset + window.innerHeight > boxTop + box.clientHeight / 1.5) {
+    if (pageOffset + window.innerHeight > boxTop + box.clientHeight / 2) {
       box.classList.add("projectBx-reveal");
     }
   });
 });
+
+// ----------INPUT FORM BUG ON MOBILE PHONE
+document.querySelector(".contact-container").style.minHeight =
+  window.innerHeight + "px";
