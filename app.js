@@ -5,6 +5,8 @@ const header = document.querySelector("header");
 const lightMode = document.querySelector(".lightmode-container i");
 const sections = document.querySelectorAll("section");
 const projectBx = document.querySelectorAll(".project-box");
+const innerHeight = window.innerHeight;
+const innerWidth = window.innerWidth;
 
 // --------ACTIVATING BURGER MENU
 burger.addEventListener("click", function () {
@@ -42,7 +44,7 @@ lightMode.addEventListener("click", () => {
   document.querySelector(":root").classList.toggle("darkmode");
 });
 
-// -----------ON LOAD ANIMATION
+// -----------ON LOAD ANIMATION OF TITLE BOX
 const navChild = header.childNodes[1].children;
 for (let i = 0; i < navChild.length; i++) {
   navChild[i].style.animation =
@@ -77,8 +79,22 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// ----------INPUT FORM BUG ON MOBILE PHONE
-document.querySelector(".contact-container").style.minHeight =
-  window.innerHeight + "px";
+// ----------MINHEIGHT
+sections.forEach((section) => {
+  section.style.minHeight = `${innerHeight}px`;
+  if (section.classList.contains("testimonial-container")) {
+    section.style.minHeight = innerHeight * 0.8 + "px";
+  }
+});
 document.querySelector(".form-container").style.minHeight =
   window.innerHeight * 0.75 + "px";
+
+//   ------------TYPED.JS
+var typed = new Typed("#name-title", {
+  stringsElement: "#typed-strings",
+  typeSpeed: 100,
+  backSpeed: 100,
+  backDelay: 1000,
+  loop: true,
+});
+// ----------TESTIMONIAL SLIDER
