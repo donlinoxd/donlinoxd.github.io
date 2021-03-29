@@ -291,7 +291,7 @@ header {
   animation: anim-onload-home 1.2s ease-in-out 0.5s backwards;
 }
 .home-container .title {
-  width: 80%;
+  width: 100%;
 }
 .home-container .title h1 {
   margin-bottom: 1rem;
@@ -304,7 +304,7 @@ header {
   animation: anim-onload-home 1.2s ease-in-out 1.2s backwards;
 }
 .home-container .title p {
-  width: 95%;
+  width: 70%;
   animation: anim-onload-home 1.2s ease-in-out 1.5s backwards;
 }
 .download-cv {
