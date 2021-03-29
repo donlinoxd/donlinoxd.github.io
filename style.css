@@ -281,7 +281,6 @@ header {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  background-color: cyan;
   padding: 0 10% 10vh;
   background: url(imgs/sora2.jpg) no-repeat fixed right bottom;
   background-size: 50%;
@@ -548,6 +547,61 @@ header {
   transform: translateY(-100%);
 }
 
+/* ----------TESTIMONIAL SECTION-------- */
+/* .testimonial-container {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: cyan;
+}
+.testi-details {
+  background-color: lightblue;
+  text-align: center;
+  width: 100%;
+}
+.testi-details h2 {
+  margin-bottom: 1rem;
+}
+.testi-slider {
+  position: relative;
+  background-color: lightblue;
+  width: 90%;
+  min-height: 300px;
+}
+.slides {
+  width: 2000px;
+  height: 100%;
+  display: flex;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  align-items: center;
+}
+.slide {
+  width: 300px;
+  height: 250px;
+  margin: 1rem;
+  background-color: red;
+}
+.next,
+.prev {
+  position: absolute;
+  font-size: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dominant-color);
+}
+.next {
+  right: 0.5rem;
+}
+.prev {
+  left: 0.5rem;
+}
+.next:active,
+.prev:active {
+  color: var(--accent-color);
+} */
 /* ----------CONTACT SECTION----------- */
 .contact-container {
   display: flex;
