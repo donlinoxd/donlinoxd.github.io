@@ -337,6 +337,7 @@ header {
 .about-me {
   width: 100%;
   height: 80vh;
+  max-height: 530px;
   background-color: var(--dominant-color);
   padding: 8vh 10%;
   color: #fff;
@@ -353,7 +354,7 @@ header {
 .about-skills {
   width: 80%;
   min-height: 100vh;
-  margin: -13vh auto 2rem;
+  margin: -60px auto 2rem;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
@@ -457,6 +458,8 @@ header {
 }
 .project-box {
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: #fff;
   max-width: 450px;
   width: 80%;
   margin: 2rem 1rem;
@@ -536,9 +539,9 @@ header {
   pointer-events: none;
 }
 .project-box:hover {
-  transform: scale(1.2);
+  transform: scale(1.12);
   box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.15);
-  z-index: 10;
+  z-index: 1;
 }
 .project-box:hover .project-img::after {
   opacity: 1;
@@ -548,67 +551,320 @@ header {
 }
 
 /* ----------TESTIMONIAL SECTION-------- */
-/* .testimonial-container {
+.testimonial-container {
   width: 100%;
-  height: 80vh;
+  height: 600px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background-color: cyan;
+  justify-content: space-evenly;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin: 0 auto;
 }
-.testi-details {
-  background-color: lightblue;
+.testi-title {
   text-align: center;
-  width: 100%;
 }
-.testi-details h2 {
-  margin-bottom: 1rem;
+.testi-title h2 {
+  font-size: var(--medium-font-size);
+  font-weight: 600;
+  color: var(--dominant-color);
+  margin-bottom: 10px;
 }
 .testi-slider {
   position: relative;
-  background-color: lightblue;
-  width: 90%;
-  min-height: 300px;
+  width: 240px;
+  height: 320px;
 }
-.slides {
-  width: 2000px;
+.testimonial-slide {
+  width: 5000px;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: -255px;
   display: flex;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
+}
+.testimonial-content {
+  width: 240px;
+  height: 320px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 15px 25px 5px;
+  background-color: var(--light-color);
+  border: 1px solid rgba(255, 255, 255, 0.219);
+  transition: transform 0.5s ease-in-out;
+}
+.testi-text i {
+  color: var(--dominant-color);
+  font-size: 2.5rem;
+}
+.testi-text p {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--dark-color);
+}
+.testi-profile {
+  width: 85px;
+  height: 85px;
+  border: 5px solid var(--light-color);
+  border-radius: 50%;
+  z-index: 1;
+  position: absolute;
+  bottom: 65px;
+}
+.testi-profile img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.testi-name {
+  color: #fff;
+  z-index: 1;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
-.slide {
-  width: 300px;
-  height: 250px;
-  margin: 1rem;
-  background-color: red;
+.testi-name > span {
+  font-weight: 500;
+}
+.testi-socmed {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+}
+.testi-socmed a {
+  font-size: 1.1rem;
+  color: #f4f9ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+.testi-socmed a:hover {
+  background-color: #f4f9ff;
+  color: #1e90ff;
+}
+
+.testimonial-content::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dominant-color);
+  clip-path: polygon(
+    0 70%,
+    2.78% 69.131%,
+    5.56% 68.289%,
+    8.33% 67.5%,
+    11.11% 66.786%,
+    13.89% 66.169%,
+    16.67% 65.669%,
+    19.44% 65.301%,
+    22.22% 65.075%,
+    25% 65%,
+    27.78% 65.075%,
+    30.56% 65.301%,
+    33.33% 65.669%,
+    36.11% 66.169%,
+    38.89% 66.786%,
+    41.67% 67.5%,
+    44.44% 68.289%,
+    47.22% 69.131%,
+    50% 70%,
+    52.78% 70.868%,
+    55.56% 71.71%,
+    58.33% 72.5%,
+    61.11% 73.213%,
+    63.89% 73.83%,
+    66.67% 74.33%,
+    69.44% 74.698%,
+    72.22% 74.924%,
+    75% 75%,
+    77.78% 74.924%,
+    80.56% 74.698%,
+    83.33% 74.33%,
+    86.11% 73.83%,
+    88.89% 73.213%,
+    91.67% 72.5%,
+    94.44% 71.71%,
+    97.22% 70.868%,
+    100% 70%,
+    100% 100%,
+    0% 100%
+  );
+}
+.testi-active::after {
+  animation: anim-wave 4s ease-in-out infinite;
+}
+.testi-active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dominant-color);
+  opacity: 0.5;
+  animation: anim-wave 7s linear infinite;
+}
+.testi-active {
+  transform: scale(1.05);
+  transform-origin: bottom;
+}
+
+@keyframes anim-wave {
+  0%,
+  100% {
+    clip-path: polygon(
+      0 70%,
+      2.78% 69.131%,
+      5.56% 68.289%,
+      8.33% 67.5%,
+      11.11% 66.786%,
+      13.89% 66.169%,
+      16.67% 65.669%,
+      19.44% 65.301%,
+      22.22% 65.075%,
+      25% 65%,
+      27.78% 65.075%,
+      30.56% 65.301%,
+      33.33% 65.669%,
+      36.11% 66.169%,
+      38.89% 66.786%,
+      41.67% 67.5%,
+      44.44% 68.289%,
+      47.22% 69.131%,
+      50% 70%,
+      52.78% 70.868%,
+      55.56% 71.71%,
+      58.33% 72.5%,
+      61.11% 73.213%,
+      63.89% 73.83%,
+      66.67% 74.33%,
+      69.44% 74.698%,
+      72.22% 74.924%,
+      75% 75%,
+      77.78% 74.924%,
+      80.56% 74.698%,
+      83.33% 74.33%,
+      86.11% 73.83%,
+      88.89% 73.213%,
+      91.67% 72.5%,
+      94.44% 71.71%,
+      97.22% 70.868%,
+      100% 70%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0 70%,
+      2.78% 70.868%,
+      5.56% 71.71%,
+      8.33% 72.5%,
+      11.11% 73.213%,
+      13.89% 73.83%,
+      16.67% 74.33%,
+      19.44% 74.698%,
+      22.22% 74.924%,
+      25% 75%,
+      27.78% 74.924%,
+      30.56% 74.698%,
+      33.33% 74.33%,
+      36.11% 73.83%,
+      38.89% 73.213%,
+      41.67% 72.5%,
+      44.44% 71.71%,
+      47.22% 70.868%,
+      50% 70%,
+      52.78% 69.131%,
+      55.56% 68.289%,
+      58.33% 67.5%,
+      61.11% 66.786%,
+      63.89% 66.169%,
+      66.67% 65.669%,
+      69.44% 65.301%,
+      72.22% 65.075%,
+      75% 65%,
+      77.78% 65.075%,
+      80.56% 65.301%,
+      83.33% 65.669%,
+      86.11% 66.169%,
+      88.89% 66.786%,
+      91.67% 67.5%,
+      94.44% 68.289%,
+      97.22% 69.131%,
+      100% 70%,
+      100% 100%,
+      0% 100%
+    );
+  }
 }
 .next,
 .prev {
   position: absolute;
-  font-size: 2rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--dominant-color);
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--accent-color);
 }
 .next {
-  right: 0.5rem;
+  right: 0px;
 }
 .prev {
-  left: 0.5rem;
+  left: 0px;
 }
 .next:active,
-.prev:active {
+.prev:actve {
   color: var(--accent-color);
-} */
+}
+.index-radio {
+  position: absolute;
+  bottom: -2.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  width: 240px;
+}
+.index-radio i {
+  font-size: 1.25rem;
+  color: var(--dark-color);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+.index-radio i.index-active {
+  background-color: var(--dominant-color);
+}
+
+.slide-transition,
+.slide-transition > .testi-active {
+  transition: all 0.3s ease-in-out;
+}
 /* ----------CONTACT SECTION----------- */
 .contact-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  max-height: 560px;
   background-color: var(--dominant-color);
   color: #000000;
 }
@@ -619,7 +875,7 @@ header {
   align-items: center;
   width: 80%;
   max-width: 600px;
-  height: 75%;
+  height: 480px;
   border-radius: 10px;
   background-color: #f4f9ff;
   position: relative;
@@ -731,7 +987,7 @@ header {
 /* ---------FOOTER------------- */
 footer {
   width: 100%;
-  height: 50vh;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -883,6 +1139,18 @@ footer div {
   .home-container {
     background-size: 33%;
   }
+  .testimonial-container {
+    width: 765px;
+  }
+  .testi-active {
+    transform: none;
+  }
+  .next {
+    right: -260px;
+  }
+  .prev {
+    left: -260px;
+  }
 }
 @media screen and (min-width: 1025px) {
   :root {
@@ -949,7 +1217,8 @@ footer div {
     background: url(imgs/lavarelandvue.svg) no-repeat fixed 95% 70%;
     background-size: 35%;
   }
-  .title p {
+  .title p,
+  .intro p {
     font-size: 1.3rem;
   }
   .nav-active {
