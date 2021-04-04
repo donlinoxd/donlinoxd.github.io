@@ -649,7 +649,8 @@ header {
   width: 30px;
   height: 30px;
 }
-.testi-socmed a:hover {
+.testi-socmed a:hover,
+.testi-socmed a:active {
   background-color: #f4f9ff;
   color: #1e90ff;
 }
@@ -1223,5 +1224,16 @@ footer div {
   }
   .nav-active {
     transform: none;
+  }
+  .contact-container {
+    justify-content: flex-start;
+    background: var(--dominant-color) url(imgs/undraw_contact_us_15o2.svg)
+      no-repeat 40px center;
+    background-size: 45%;
+  }
+  .form-container {
+    position: relative;
+    left: 50%;
+    width: 50%;
   }
 }
