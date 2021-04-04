@@ -192,7 +192,6 @@ function dragEnd(e) {
   slideContainer.style.cursor = "grab";
   slideContainer.classList.add("slide-transition");
   if (e.type == "touchend") {
-    posX2 = e.touches[0].clientX;
     finalPos = slideContainer.offsetLeft;
     let i = finalPos - initialPos;
     if (i < -130) {
@@ -235,7 +234,7 @@ function dragEnd(e) {
     }
   }
   initialPos = slideContainer.offsetLeft;
-  checkIndex();
+  slideContainer.classList.add("slide-transition");
 }
 
 function dragMove(e) {
