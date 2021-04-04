@@ -112,6 +112,15 @@ slideContent.forEach((content) => {
 
 let index = 0;
 
+let posX1;
+let posX2;
+let initialPos;
+let finalPos;
+let isDragging = false;
+
+// bug for clicking multiple times
+let canISlide = true;
+
 const cloneFirstSlide = slideContent[0].cloneNode(true);
 const cloneLastSlide = slideContent[slideContent.length - 1].cloneNode(true);
 
@@ -121,6 +130,7 @@ slideContainer.insertBefore(cloneLastSlide, slideContent[0]);
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 
+// NEXT AND PREVIOUS BUTTON
 next.addEventListener("click", () => switchSlide("next"));
 prev.addEventListener("click", () => switchSlide("prev"));
 
@@ -129,37 +139,125 @@ for (let i = 0; radioIndex.length > i; i++) {
   radioIndex[i].addEventListener("click", () => switchSlide(i));
 }
 
+// DRAGGING SLIDES
+slideContainer.addEventListener("mousedown", dragStart);
+slideContainer.addEventListener("touchstart", dragStart);
+
+slideContainer.addEventListener("mouseup", dragEnd);
+slideContainer.addEventListener("touchend", dragEnd);
+
+slideContainer.addEventListener("mousemove", dragMove);
+slideContainer.addEventListener("touchmove", dragMove);
+
 slideContainer.addEventListener("transitionend", checkIndex);
 
 function switchSlide(arg) {
   slideContainer.classList.add("slide-transition");
-  if (arg == "next") {
-    slideContainer.style.left = `${
-      slideContainer.offsetLeft - slideContentWidth - spaceBetween
-    }px`;
-    index++;
-  } else if (arg == "prev") {
-    slideContainer.style.left = `${
-      slideContainer.offsetLeft + slideContentWidth + spaceBetween
-    }px`;
-    index--;
+  if (canISlide) {
+    if (arg == "next") {
+      slideContainer.style.left = `${
+        slideContainer.offsetLeft - slideContentWidth - spaceBetween
+      }px`;
+      index++;
+    } else if (arg == "prev") {
+      slideContainer.style.left = `${
+        slideContainer.offsetLeft + slideContentWidth + spaceBetween
+      }px`;
+      index--;
+    } else {
+      let i = arg;
+      slideContainer.style.left = `-${
+        (slideContentWidth + spaceBetween) * i + 255
+      }px`;
+      index = i;
+    }
+  }
+  canISlide = false;
+}
+
+function dragStart(e) {
+  e.preventDefault();
+  isDragging = true;
+  slideContainer.style.cursor = "grabbing";
+  initialPos = slideContainer.offsetLeft;
+  if (e.type == "touchstart") {
+    posX1 = e.touches[0].clientX;
   } else {
-    let i = arg;
-    slideContainer.style.left = `-${
-      (slideContentWidth + spaceBetween) * i + 255
-    }px`;
-    index = i;
+    posX1 = e.clientX;
+  }
+}
+
+function dragEnd(e) {
+  isDragging = false;
+  slideContainer.style.cursor = "grab";
+  slideContainer.classList.add("slide-transition");
+  if (e.type == "touchend") {
+    posX2 = e.touches[0].clientX;
+    finalPos = slideContainer.offsetLeft;
+    let i = finalPos - initialPos;
+    if (i < -130) {
+      x = Math.floor((-i - 130) / 255) + 1;
+      index += x;
+      slideContainer.style.left = `-${
+        (slideContentWidth + spaceBetween) * index + 255
+      }px`;
+    } else if (i > 130) {
+      x = -Math.floor((i - 130) / 255) - 1;
+      index += x;
+      slideContainer.style.left = `-${
+        (slideContentWidth + spaceBetween) * index + 255
+      }px`;
+    } else {
+      slideContainer.style.left = `-${
+        (slideContentWidth + spaceBetween) * index + 255
+      }px`;
+    }
+  } else {
+    posX2 = e.clientX;
+    finalPos = slideContainer.offsetLeft;
+    let i = finalPos - initialPos;
+    if (i < -130) {
+      x = Math.floor((-i - 130) / 255) + 1;
+      index += x;
+      slideContainer.style.left = `-${
+        (slideContentWidth + spaceBetween) * index + 255
+      }px`;
+    } else if (i > 130) {
+      x = -Math.floor((i - 130) / 255) - 1;
+      index += x;
+      slideContainer.style.left = `-${
+        (slideContentWidth + spaceBetween) * index + 255
+      }px`;
+    } else {
+      slideContainer.style.left = `-${
+        (slideContentWidth + spaceBetween) * index + 255
+      }px`;
+    }
+  }
+  initialPos = slideContainer.offsetLeft;
+  checkIndex();
+}
+
+function dragMove(e) {
+  if (!isDragging) return;
+  slideContainer.style.cursor = "grabbing";
+  if (e.type == "touchmove") {
+    posX2 = e.touches[0].clientX;
+    slideContainer.style.left = `${initialPos + (posX2 - posX1)}px`;
+  } else {
+    posX2 = e.clientX;
+    slideContainer.style.left = `${initialPos + (posX2 - posX1)}px`;
   }
 }
 
 function checkIndex() {
   slideContainer.classList.remove("slide-transition");
-  if (index == -1) {
+  if (index <= -1) {
     slideContainer.style.left = `-${
       slideContent.length * (slideContentWidth + spaceBetween)
     }px`;
     index = slideContent.length - 1;
-  } else if (index == slideContent.length) {
+  } else if (index >= slideContent.length) {
     slideContainer.style.left = `-${slideContentWidth + spaceBetween}px`;
     index = 0;
   }
@@ -177,4 +275,6 @@ function checkIndex() {
 
   // remove the animation on clone node
   cloneFirstSlide.classList.remove("testi-active");
+
+  canISlide = true;
 }
