@@ -582,6 +582,7 @@ header {
   top: 0;
   left: -255px;
   display: flex;
+  cursor: grab;
 }
 .testimonial-content {
   width: 240px;
@@ -854,8 +855,7 @@ header {
   background-color: var(--dominant-color);
 }
 
-.slide-transition,
-.slide-transition > .testi-active {
+.slide-transition {
   transition: all 0.3s ease-in-out;
 }
 /* ----------CONTACT SECTION----------- */
