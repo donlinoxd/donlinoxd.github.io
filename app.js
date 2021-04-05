@@ -1,38 +1,39 @@
+// FOR STICKY HEADER AND TOGGLING BURGER & NAV LINKS
 const burger = document.querySelector(".nav-burger");
 const navLinks = document.querySelector(".nav-links");
 const navLink = document.querySelectorAll(".nav-link");
 const header = document.querySelector("header");
 
+// FOR TOGGLING LIGHT AND DARKMODE
 const lightMode = document.querySelector(".lightmode-container i");
 
+// FOR MIN HEIGHT
 const sections = document.querySelectorAll("section");
 
+// FOR PROJECT BOX ANIMATION
 const projectBx = document.querySelectorAll(".project-box");
 
 const innerHeight = window.innerHeight;
 const innerWidth = window.innerWidth;
 
 // --------ACTIVATING BURGER MENU
-burger.addEventListener("click", function () {
-  if (
-    burger.style.animation == "0.5s ease 0s 1 normal none running burger-anim"
-  ) {
-    burger.style.animation = "burger-anim2 0.5s";
-  } else {
-    burger.style.animation = "burger-anim 0.5s";
-  }
+burger.addEventListener("click", () => {
+  burger.style.animation = "burger-anim 0.5s";
+  burger.addEventListener("animationend", () => {
+    burger.style.animation = null;
+  });
   navLinks.classList.toggle("nav-active");
 });
 
 // ----------DEACTIVATING BURGER MENU
-for (let i = 0; navLink.length > i; i++) {
-  navLink[i].addEventListener("click", function () {
+navLink.forEach((link) => {
+  link.addEventListener("click", () => {
     navLinks.classList.toggle("nav-active");
   });
-}
+});
 
 // Sticky header on scroll
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
   header.classList.toggle("sticky-header", window.scrollY > 0);
 });
 
