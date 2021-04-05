@@ -352,6 +352,7 @@ header {
   text-align: center;
 }
 .about-skills {
+  max-width: 900px;
   width: 80%;
   min-height: 100vh;
   margin: -60px auto 2rem;
