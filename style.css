@@ -485,19 +485,21 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 10px 20px;
+  padding: 10px;
   flex-direction: column;
   color: #fff;
   z-index: 2;
   transition: 0.8s;
 }
-.project-content p:first-child {
-  font-size: 1em;
-  font-weight: 500;
-}
 .project-content p {
   text-align: center;
   font-size: 0.7em;
+  margin: 0 10px;
+}
+.project-content p:first-child {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0;
 }
 .btn {
   display: flex;
