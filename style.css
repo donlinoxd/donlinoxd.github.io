@@ -286,7 +286,6 @@ header {
 .home-container .title h1 {
   margin-bottom: 1rem;
   font-size: var(--big-font-size);
-  font-family: var(--body-font);
   font-weight: 500;
   animation: anim-onload-home 1.2s ease-in-out 0.8s backwards;
 }
